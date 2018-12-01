@@ -1,7 +1,7 @@
 # Tron DApp Template
 
 
-> For more details, checkout video tutorial series -
+> For basic tutorial series, checkout video tutorial series -
 
 > Best Tron (TRX) DApp Tutorial Series for Beginners : https://www.youtube.com/playlist?list=PLL5pYVd8AWtRDnTTKWzPpFcBT9nrPCQt6
 

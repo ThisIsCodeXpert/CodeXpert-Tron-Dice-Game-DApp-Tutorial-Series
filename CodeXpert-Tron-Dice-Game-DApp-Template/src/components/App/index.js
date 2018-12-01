@@ -12,7 +12,6 @@ const FOUNDATION_ADDRESS = 'TWiWt5SEDzaEqS6kE5gandWMNfxR2B5xzg';
 ////////////////////////////////////////////////////////////////////////////////////
 const contractAddress = '';   /// Add your contract address here
 ////////////////////////////////////////////////////////////////////////////////////
-var activePlayer, cube, currentClass;
 
 class App extends React.Component {
 
@@ -108,10 +107,7 @@ class App extends React.Component {
         }
 
         await Utils.setTronWeb(window.tronWeb, contractAddress);
-        const tmp_tronwebaddress = Utils.tronWeb.address.fromHex((((await Utils.tronWeb.trx.getAccount()).address).toString()))
-        await this.setState({
-          tronwebaddress:tmp_tronwebaddress
-        });
+
 
     }
 

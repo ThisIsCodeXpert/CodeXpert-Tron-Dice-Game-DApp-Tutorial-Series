@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  #body {
+   background-image: url("background_2.jpeg");
+   background-color: #cccccc;
+    //min-height: 100%;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topnav {
+  background-color: #dee0e2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: rgba(211, 211, 211, 0.6);
+}
+
+/**********************************************
+*** GENERAL
+**********************************************/
+
+body {
+    font-family: Lato;
+    font-weight: 300;
+    color: #555;
+    background-color : #ccc;
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.top-buttons {
+    width: 223px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px 0 20px 0;
+}
+
+button {
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+button:focus {
+    outline: none;
+}
+
+.btn-new{
+    border: 2px solid #FFFF;
+    border-radius: 25px;
+    background-color: #4CAF50;
+}
+
+.btn-new:hover{
+    border: 2px solid #EB4D4D;
+}
+
+
+.hiderules {
+    display: none;
+}
+
+.showrules {
+    display: block;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.popuptext {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: +10000;
+    background: #FFF;
+}
+
+.grid-container {
+    display:grid;
+    grid-template-columns: auto auto;
+}
+
+.displaynone {
+    display: none;
+}
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.active {
+    border: 2px solid #73AD21;
+    border-radius: 25px;
+}
+
+.player-name {
+    font-size: 26px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-top: 10px;
+    position: relative;
+}
+
+.player-name::after {
+    content: "\2022";
+    font-size: 47px;
+    color: #FFF;
+    position: relative;
+    top: 4px;
+}
+
+.active .player-name::after {
+    color: #EB4D4D;
+}
+
+.player-score {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 100;
+    color: #EB4D4D;
+    margin-bottom: 122px;
+}
+
+.player-controls {
+    width: 100px;
+    position: relative;
+    top: 220px;
+    margin-right: 10px;
+      text-align: center;
+
+}
+
+.disable-controls {
+    z-index:-10000;
+}
+
+.grey {
+    color:#CCC;
+}
+
+i {
+    color: #EB4D4D;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+button:hover i { margin-right: 20px; }
+
+.player-current-box {
+    border-radius: 25px;
+    border: 1px solid #EB4D4D;
+    position: relative;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    padding: 12px;
+    text-align: center;
+    display: none;
+}
+
+.active .player-current-box {
+    display: block;
+}
+
+.winner .player-name { color: #EB4D4D; }
+
+/**********************************************
+*** DICE
+**********************************************/
+
+.dice {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+
+.div-bet{
+  margin:auto;
+  display:block;
+  margin-top: 100px;
+  margin-bottom: 20px;
+
+}
+.btn-roll{
+  margin:auto;
+  display:block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+.btn-roll:hover{
+  margin-top: 13px;
+
+}
+
+@keyframes spin {
+    0% { transform: translateZ(-50px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    16% { transform: translateZ(-50px) rotateX(180deg) rotateY(180deg) rotateZ(0deg); }
+    33% { transform: translateZ(-50px) rotateX(360deg) rotateY(90deg) rotateZ(180deg); }
+    50% { transform: translateZ(-50px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    66% { transform: translateZ(-50px) rotateX(180deg) rotateY(360deg) rotateZ(270deg); }
+    83% { transform: translateZ(-50px) rotateX(270deg) rotateY(180deg) rotateZ(180deg); }
+    100% { transform: translateZ(-50px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+.cube {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-50px);
+  transition: transform 0.8s;
+}
+
+.animation-1 {animation: spin 50s infinite linear;}
+
+.animation-2 {animation: spin 1.6s infinite linear;}
+
+.cube.show-1 { transform: translateZ(-50px) rotateY(0deg);}
+.cube.show-2 { transform: translateZ(-50px) rotateY(-90deg);}
+.cube.show-3 { transform: translateZ(-50px) rotateY(-180deg);}
+.cube.show-4 { transform: translateZ(-50px) rotateY(90deg);}
+.cube.show-5 { transform: translateZ(-50px) rotateX(-90deg);}
+.cube.show-6 { transform: translateZ(-50px) rotateX(90deg);}
+
+*[class^='cube_face'] {
+  display: grid;
+  position: absolute;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #444;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  background: #FFF;
+  box-shadow: inset 0 0 0 #ccc;
+}
+
+.cube_face_1 { transform: rotateY(0deg) translateZ(50px); }
+.cube_face_2 { transform: rotateY(90deg) translateZ(50px); }
+.cube_face_3 { transform: rotateY(180deg) translateZ(50px); }
+.cube_face_4 { transform: rotateY(-90deg) translateZ(50px); }
+.cube_face_5 { transform: rotateX(90deg) translateZ(50px); }
+.cube_face_6 { transform: rotateX(-90deg) translateZ(50px); }
+
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>TRON Message Board</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+  </head>
+  <body id="body" style="color:#43abc9; font-weight:bold">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+
+
+
+
+
+
+
+    <div style="width:100%">
+      <div id="root"></div>
+      </br>
+      </br>
+      </br>
+      </br>
+
+      <div style="position:relative">
+      <div class="dice">
+        <div class="cube animation-1">
+          <div class="cube_face_1" >&bull;</div>
+          <div class="cube_face_2">&bull;&ensp;&ensp;&bull;</div>
+          <div class="cube_face_3">&emsp;&emsp;&bull;<br>&ensp;&ensp;&bull;<br>&bull;</div>
+          <div class="cube_face_4">&bull;&ensp;&emsp;&bull;<br><br>&bull;&ensp;&emsp;&bull;</div>
+          <div class="cube_face_5">&bull;&ensp;&emsp;&bull;<br>&emsp;&bull;<br>&bull;&ensp;&emsp;&bull;</div>
+          <div class="cube_face_6">&bull;&ensp;&emsp;&bull;<br>&bull;&ensp;&emsp;&bull;<br>&bull;&ensp;&emsp;&bull;</div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+      </br>
+      </br>
+      </br>
+    </div>
+  </body>
+</html>
